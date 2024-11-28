@@ -1,0 +1,27 @@
+name: deploy-docs
+
+on:
+  push:
+    branches:
+      - ${STAGE}
+
+jobs:
+  gh_tagged_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - run: pnpm install
+      - run: npm run docs
+      - uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.PROJECT_AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.PROJECT_AWS_SECRET }}
+          aws_bucket: ${{ secrets.DOCK_DOMAIN }}
+          source_dir: docs
+          destination_dir: ${STAGE}

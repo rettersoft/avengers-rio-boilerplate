@@ -1,0 +1,33 @@
+{
+    "name": "rio-boilerplate",
+    "version": "0.0.1",
+    "main": "index.js",
+    "apidoc": {
+        "title": "Documentation",
+        "url": "https://RIO_API_DOMAIN"
+    },
+    "scripts": {
+        "prebuild": "npm run clean",
+        "build": "tsc",
+        "docs": "apidoc -i classes -o docs",
+        "clean": "rm -rf dist coverage tmp docs models",
+        "deploy:${STAGE}": "rio d --p ${RIO_PROFILE_NAME} --pid ${PROJECT_ID} --i",
+        "models": "ts-node scripts/export-models.ts",
+        "test": "echo 'no tests'"
+    },
+    "devDependencies": {
+        "@retter/rdk": "~2",
+        "@retter/rio-cli": "~1",
+        "@types/node": "~20",
+        "apidoc": "~1",
+        "chalk": "~4",
+        "ts-node": "~10",
+        "tsconfig-paths": "~4",
+        "typescript": "~5",
+        "yaml": "~2",
+        "zod-to-json-schema": "~3"
+    },
+    "dependencies": {
+        "zod": "~3"
+    }
+}

@@ -1,0 +1,15 @@
+authorizer: authorizer.authorize
+init: index.init
+getState: index.getState
+getInstanceId: index.getInstanceId
+dependencies:
+  - custom-dependency
+
+methods:
+  - method: sampleMethod
+    description: >
+      This is a sample method.
+    type: READ
+    handler: sample.sampleMethod
+    inputModel: SampleMethodInput
+    outputModel: SampleMethodOutput

@@ -1,0 +1,25 @@
+name: deploy-${STAGE}
+
+on:
+    push:
+        branches:
+            - ${STAGE}
+
+jobs:
+    gh_tagged_release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+            - uses: pnpm/action-setup@v3
+              with:
+                  version: 8
+            - run: pnpm install -g @retter/rio-cli
+            - run: rio set-profile --profile-name ${{ secrets.RIO_PROFILE_NAME }} --secret-id ${{ secrets.RIO_SECRET_ID }} --secret-key ${{ secrets.RIO_SECRET_KEY }} --endpoint ${{ secrets.RIO_DOMAIN }}
+            - run: pnpm install
+            - run: npm run build
+            - run: npm run test
+            - run: npm run models
+            - run: npm run deploy:${STAGE}

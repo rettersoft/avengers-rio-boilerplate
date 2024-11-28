@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "commonjs",
+        "lib": ["ES2017"],
+        "rootDir": ".",
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "declaration": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": false,
+        "strictPropertyInitialization": false,
+        "sourceMap": true,
+        "types": ["node"],
+        "typeRoots": ["./node_modules/@types"],
+        "outDir": "dist",
+        "paths": {
+            "custom-dependency": ["./dependencies/custom-dependency"],
+            "custom-dependency/*": ["./dependencies/custom-dependency/*"],
+        }
+    },
+    "include": ["classes", "dependencies"],
+    "exclude": ["dist", "node_modules", "tmp"],
+    "ts-node": {
+        "require": ["tsconfig-paths/register"]
+    }
+}
