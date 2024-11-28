@@ -53,12 +53,28 @@ There are separate flows for deploying each project as well as the pull requests
 
 The project lives in a private repository inside a Github account held by Retter and only team members can have write access to it.
 
-The root branch is always called “main” and no one can send a commit directly to it. Instead of that, the developers should create a feature branch for each task and ask for a merge via a pull request.
+The root branch is always called “main” and no one can send a commit directly to it.
+Instead of that, the developers should create a feature branch for each task and ask for a merge via a pull request.
 
-The project should have at least 5 branches: main, dev, staging, uat and prod. As we mentioned earlier, main is the “main” branch. Everything starts from it. Besides that, dev is for development, staging is for internal acceptance tests, uat is for customer approval tests and then prod is for the production.
+The project should have at least 5 branches: main, dev, staging, uat and prod.
+As we mentioned earlier, main is the “main” branch. Everything starts from it.
+Besides that, dev is for development, staging is for internal acceptance tests, uat is for customer approval tests and then prod is for the production.
 
-All developers create their feature branches from the main branch and develop their solutions inside them. To be able to test their feature branches, they should merge them to the development branch. If everything is OK within the development environment, then, they should merge their feature branches to the staging branch. The Avengers should make sure that every feature branch in the staging environment is stable before creating a pull request against the uat branch.
+All developers create their feature branches from the main branch and develop their solutions inside them.
+To be able to test their feature branches, they should merge them to the development branch.
+If everything is OK within the development environment, then, they should merge their feature branches to the staging branch.
+The Avengers should make sure that every feature branch in the staging environment is stable before creating a pull request against the uat branch.
 
 > Pull requests should have at least 3 reviewers and 1 assignee and they should merge by “Squash and Merge” strategy.
 
-After the review processes, accepted PRs merge to the uat branch. Our and customers’ tester teams evaluate the final stage of uat environment according to the tasks. At the end, if everything is OK in uat, team can create another pull request from uat to the production branch. If there are branches merged to uat which are not going to be released into production yet, then, the developers should create pull requests from their features branches to the production.
+After the review processes, accepted PRs merge to the uat branch.
+Our and customers’ tester teams evaluate the final stage of uat environment according to the tasks.
+At the end, if everything is OK in uat, team can create another pull request from uat to the production branch.
+If there are branches merged to uat which are not going to be released into production yet, then, the developers should create pull requests from their features branches to the production.
+
+### Task Management
+
+Life cycles of all projects are managed on Jira. In each task, there are detailed explanations.
+If it’s necessary, there might be schemas, diagrams and screenshots.
+As well as the instructions about the task, there are also detailed acceptance criteria and test scenarios.
+All developers should complete unit tests for the given scenarios, update the related documentation and of course develop the solutions according to the task.
